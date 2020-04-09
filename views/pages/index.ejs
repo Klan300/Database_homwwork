@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?- include('../partials/head') -?>   
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+</head>
+<body>
+    <main>
+        <div class="bot">
+            <div class="jumbotron">
+                <h1>Choose Word</h1>
+                <div class="flex-box">
+                    <% words.forEach(function(n) { %>
+                        <a class="link" href="<%= n.word %>" > <%= n.word %></a>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+</main>
+</body>
+
+</html>

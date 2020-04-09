@@ -1,0 +1,38 @@
+body,html {
+    background-color: bisque;
+    font-family: 'Kanit', sans-serif;
+}
+
+.bot{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.jumbotron {
+    width: 40%;
+    margin-top: 100px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.flex-box{
+   display: flex;
+   flex-direction: column;
+}
+
+.link {
+    background-color: cornsilk;
+    padding: 30px;
+    border-radius: 20px;
+    border:solid 1px;
+    border-color: gray;
+    font-size: 25px;
+    color: rgb(126, 118, 46);
+    text-decoration: none;
+}
+
+.link:hover{
+    background-color:  rgb(209, 201, 167);
+}

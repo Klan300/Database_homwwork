@@ -1,0 +1,68 @@
+<!-- views/pages/about.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body class="container">
+    <main>
+        <div class="bot">
+            <div class="answer">
+            </div>
+            <div class="submitBox">
+                    <label for="fname">Answer Word(only one alphabet):</label><br>
+                    <input type="text" id="alphabet" pattern="[A-Za-z]{1}" value="">
+                    <input type="button" onclick="submitfunc();" />
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    var word = '<%- words %>';
+    const ans = [];
+    var try_ans = 0;
+
+    window.onload = function () {
+        create_game();
+    }
+
+    function submitfunc() {
+        var a = document.getElementById('alphabet').value;
+        try_ans += 1;
+        ans.push(a);
+        create_game();
+    }
+
+    function create_game() {
+        div_answer = $('.answer');
+        game = "";
+        
+        for (var i = 0; word.length > i; i++) {
+            var count = 0
+            var lower = word[i].toLowerCase();
+            var upper = word[i].toUpperCase();
+            if (arrayContains(lower, ans) || arrayContains(upper, ans)) {
+                game += word[i];
+                count +=1;
+            } else {
+                game += "_ ";
+            }
+        }
+        game += `try ${try_ans}`;
+        div_answer.html(game);
+
+        if (count == 6){
+            alert("You win this Game")
+        }
+    }
+
+    function arrayContains(needle, arrhaystack) {
+        return (arrhaystack.indexOf(needle) > -1);
+    }
+</script>
+
+</html>
