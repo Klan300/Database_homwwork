@@ -4,6 +4,8 @@
 <html lang="en">
 
 <head>
+    <?- include('../partials/head') -?>   
+    <link rel="stylesheet" type="text/css" href="/css/game.css">
 </head>
 
 <body class="container">
@@ -12,9 +14,10 @@
             <div class="answer">
             </div>
             <div class="submitBox">
-                    <label for="fname">Answer Word(only one alphabet):</label><br>
+                <form>
+                    <label for="fname" class="label-box">Answer Word(only one alphabet):</label><br>
                     <input type="text" id="alphabet" pattern="[A-Za-z]{1}" value="">
-                    <input type="button" onclick="submitfunc();" />
+                    <input type="button" class="button" value="submit" onclick="submitfunc();" />
                 </form>
             </div>
         </div>
@@ -31,10 +34,15 @@
     }
 
     function submitfunc() {
-        var a = document.getElementById('alphabet').value;
-        try_ans += 1;
-        ans.push(a);
-        create_game();
+        var a = document.getElementById('alphabet');
+        if (a.value.length <= 1){
+            try_ans += 1;
+            ans.push(a.value);
+            create_game();
+        }
+        else {
+            alert('Please Enter only one Alphabet');
+        }
     }
 
     function create_game() {
@@ -52,7 +60,7 @@
                 game += "_ ";
             }
         }
-        game += `try ${try_ans}`;
+        game += ` try ${try_ans}`;
         div_answer.html(game);
 
         if (count == 6){
